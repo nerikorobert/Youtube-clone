@@ -1,35 +1,38 @@
-import { Stack } from '@mui/material';
-import { categories } from '../utils/constants';
+import { Stack } from '@mui/material'; // Importing Stack component from Material-UI
+import { categories } from '../utils/constants'; // Importing categories from constants file
 
+// Sidebar component takes selectedCategory and setSelectedCategory as props
 const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
     <Stack
-        direction='row'
-        sx={{
-            overflowY: "auto",
-            height: { sx: 'auto', md: '95%' },
-            flexDirection: { md: 'column' },
+        direction='row' // Arrange items horizontally
+        sx={{ // Custom styles for the Stack component
+            overflowY: "auto", // Enable vertical scrolling
+            height: { sx: 'auto', md: '95%' }, // Set height for different screen sizes
+            flexDirection: { md: 'column' }, // Change direction to column on medium-sized screens
         }}
-
     >
+        {/* Mapping through categories to render buttons */}
         {categories.map((category) => (
             <button
-                className="category-btn"
-                onClick={() => setSelectedCategory(category.name)}
+                className="category-btn" // CSS class for styling
+                onClick={() => setSelectedCategory(category.name)} // Set selected category on click
                 style={{
-                    background: category.name ===
-                        selectedCategory && '#FC1503',
-                    color: 'white'
+                    background: category.name === selectedCategory && '#FC1503', // Change background color if selected
+                    color: 'white' // Set text color to white
                 }}
-                key={category.name}
-
+                key={category.name} // Unique key for each category button
             >
-                <span style={{ color: category.name === selectedCategory ? 'white' : 'red', marginRight: '15px' }}> {category.icon}</span>
-                <span style={{ opacity: category.name === selectedCategory ? '1' : '0.8' }}> {category.name}</span>
+                {/* Render category icon */}
+                <span style={{ color: category.name === selectedCategory ? 'white' : 'red', marginRight: '15px' }}>
+                    {category.icon}
+                </span>
+                {/* Render category name */}
+                <span style={{ opacity: category.name === selectedCategory ? '1' : '0.8' }}>
+                    {category.name}
+                </span>
             </button>
         ))}
-
-    </Stack >
-
+    </Stack>
 )
 
-export default Sidebar
+export default Sidebar; // Export Sidebar component
