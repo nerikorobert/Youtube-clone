@@ -45,7 +45,7 @@ const SearchBar = () => {
             />
 
             <IconButton type="submit" sx={{ p: '10px', colour: 'red' }}>
-                <Search /> // Using the Search icon inside the IconButton component
+                <Search />  
             </IconButton>
         </Paper>
     )
